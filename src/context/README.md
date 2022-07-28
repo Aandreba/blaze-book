@@ -11,4 +11,7 @@ pub trait Context {
 }
 ```
 
-Note that all `Context` types must implement `Deref` with a target of `RawContext`.
+The `queues` method returns a list with all the command queues owned by the context.\
+The `next_queue` method returns the next command queue to be used in an _enqueue_ function.
+
+> Note that all `Context` types must implement `Deref` with a target of `RawContext`.
