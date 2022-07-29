@@ -27,5 +27,31 @@ pub struct Rect2D<T, A: Allocator = Global> {
 
 ## Example
 ```rust
+use blaze::{prelude::*, context::SimpleContext};
 
+#[global_context]
+static CONTEXT : SimpleContext = SimpleContext::default();
+
+#[test]
+fn main () -> Result<()> {
+    /*
+        [
+            1, 2, 3,
+            4, 5, 6,
+            7, 8, 9,
+        ]
+    */
+    let buffer = BufferRect2D::new(&[1, 2, 3, 4, 5, 6, 7, 8, 9], 3, MemAccess::READ_ONLY, false)?;
+    let evt = buffer.read((1.., 1..), EMPTY)?;
+    let segment = evt.wait()?;
+
+    /*
+        [
+            5, 6,
+            8, 9
+        ]
+    */
+    assert_eq!(segment.as_slice(), &[5, 6, 8, 9]);
+    Ok(())
+}
 ```

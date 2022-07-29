@@ -1,4 +1,4 @@
-# Buffer
+# Buffers
 
 The `Buffer` type is a wrapper arround a `RawBuffer` that provides extra functionality and safety guarantees. It has the following signature:
 
