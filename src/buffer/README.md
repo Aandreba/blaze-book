@@ -34,7 +34,7 @@ fn without_buffer () -> Result<()> {
     let buffer = RawBuffer::new(
         values.len() * core::mem::size_of::<i32>(), 
         MemFlags::new(MemAccess::READ_ONLY, HostPtr::COPY), 
-        NonNull::new(values.as_ptr() as *mut i32)
+        NonNull::new(values.as_ptr() as *mut _)
     )?;
     
     let mut read = Vec::<i32>::with_capacity(values.len());
