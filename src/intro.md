@@ -1,4 +1,5 @@
-# Introduction
+# Blaze
+
 > **Note**\
 > Blaze is still very much unstable and in early development. At this stage, methods and traits may be changed without deprecation period. Unexpected bugs may arise.
 
