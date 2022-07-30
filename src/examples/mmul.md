@@ -9,7 +9,7 @@ use blaze::prelude::*;
 static CONTEXT : SimpleContext = SimpleContext::default();
 
 #[blaze(MatrixOps)]
-#[link(include_str!("matrixops.cl"))]
+#[link = include_str!("matrixops.cl")]
 extern "C" {
     #[link_name = "mul"]
     fn matrix_mul (k: u32, lhs: *const f32, rhs: *const f32, out: *mut MaybeUninit<f32>);
