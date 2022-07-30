@@ -30,16 +30,8 @@ public class Person {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public LocalDate getBirthDate() {
         return birthDate;
-    }
-
-    public void setBirthDate(LocalDate birthDate) {
-        this.birthDate = birthDate;
     }
 
     public int getAge () {
@@ -53,7 +45,7 @@ This level of distrust amongst develepers is already too ingrained in the Java c
 ```rust,mdbook-runnable
 use std::time::{SystemTime, Duration, SystemTimeError};
 
-pub const YEAR_IN_SECS : u64 = 31557600;
+pub const SECS_IN_YEAR : u64 = 31557600;
 
 #[derive(Debug, Clone)]
 #[non_exhaustive]
@@ -85,12 +77,12 @@ impl Person {
             self.birth_date.elapsed().unwrap_unchecked()
         };
 
-        dur.as_secs() / YEAR_IN_SECS
+        dur.as_secs() / SECS_IN_YEAR
     }
 }
 
 fn main () {
-    let alex = Person::from_age("Alex", Duration::from_secs(21 * YEAR_IN_SECS));
+    let alex = Person::from_age("Alex", Duration::from_secs(21 * SECS_IN_YEAR));
     println!("{}: {} years old", alex.name, alex.age());
     assert_eq!(alex.age(), 21);
 }

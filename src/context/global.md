@@ -1,8 +1,8 @@
 # Global Context
 
-Inspired by Rust's `Allocator` syntax, `Global` is a [ZST](https://doc.rust-lang.org/nomicon/exotic-sizes.html#zero-sized-types-zsts) that will be treated as the default context for most operations requiring of an OpenCL context or command queue.
+Inspired by Rust's Allocator syntax, `Global` is a [ZST](https://doc.rust-lang.org/nomicon/exotic-sizes.html#zero-sized-types-zsts) that will be treated as the default context for most operations requiring of an OpenCL context or command queue.
 
-Like with the `Allocator` API, you can specify a global context with the `#[global_context]` macro.
+Like with the Allocator API, you can specify a global context with the `#[global_context]` macro.
 
 ```rust
 use blaze::prelude::*;

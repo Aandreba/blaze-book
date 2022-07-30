@@ -11,7 +11,7 @@ use std::sync::atomic::AtomicU32;
 static CONTEXT : SimpleContext = SimpleContext::default();
 
 #[blaze(BadAtomic)]
-#[link(...)]
+#[link = ...]
 extern "C" {
     fn use_atomic (value: *const AtomicU32);
 }
@@ -38,7 +38,7 @@ use std::sync::atomic::AtomicU32;
 static CONTEXT : SimpleContext = SimpleContext::default();
 
 #[blaze(GoodAtomic)]
-#[link(...)]
+#[link = ...]
 extern "C" {
     fn use_atomic (value: *const AtomicU32);
 }

@@ -17,7 +17,7 @@ static CODE : Lazy<String> = Lazy::new(|| {
 });
 
 #[blaze(Rng)]
-#[link(Lazy::force(&CODE))]
+#[link = Lazy::force(&CODE)]
 pub extern "C" {
     fn next_ints (n: u32, out: *mut MaybeUninit<u32>);
 }
