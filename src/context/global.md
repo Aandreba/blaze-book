@@ -17,8 +17,8 @@ fn with_global () -> Result<()> {
     let buffer2 : Buffer<i32> = Buffer::new(&[5, 4, 3, 2, 1], MemAccess::WRITE_ONLY, false)?;
 
     // Read the full contents of both buffers
-    let read = buffer.read_all(EMPTY)?;
-    let read2 = buffer2.read_all(&read)?;
+    let read = buffer.read(.., EMPTY)?;
+    let read2 = buffer2.read(.., &read)?;
     let join : Vec<Vec<i32>> = ReadBuffer::join([read2, read])?.wait()?;
 
     assert_eq!(join[0].as_slice(), &[5, 4, 3, 2, 1]);
@@ -35,10 +35,10 @@ fn without_global () -> Result<()> {
     let buffer : Buffer<i32, SimpleContext> = Buffer::new_in(ctx.clone(), &[1, 2, 3, 4, 5], MemAccess::READ_ONLY, false)?;
     let buffer2 : Buffer<i32, SimpleContext> = Buffer::new_in(ctx.clone(), &[5, 4, 3, 2, 1], MemAccess::WRITE_ONLY, false)?;
 
-    // Read the full contents of both buffers taking ownership of the `Arc`
-    let read = buffer.read_all(EMPTY)?;
-    let read2 = buffer2.read_all(&read)?;
-    let join = ReadBuffer::join_in([read2, read], ctx.next_queue())?.wait()?;
+    // Read the full contents of both buffers
+    let read = buffer.read(.., EMPTY)?;
+    let read2 = buffer2.read(.., &read)?;
+    let join : Vec<Vec<i32>> = ReadBuffer::join_in([read2, read], ctx.next_queue())?.wait()?;
 
     assert_eq!(join[0].as_slice(), &[5, 4, 3, 2, 1]);
     assert_eq!(join[1].as_slice(), &[1, 2, 3, 4, 5]);

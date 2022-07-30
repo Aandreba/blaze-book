@@ -11,6 +11,7 @@
     - [Global Context](context/global.md)
 - [Buffers](buffer/README.md)
     - [Rectangular Buffer](buffer/rect.md)
+    - [Mapping](buffer/map.md)
 - [Events](events/README.md)
     - [Asynchronous event](events/sync.md)
 - [Shared Virtual Memory](svm/README.md)

@@ -22,7 +22,7 @@ static CONTEXT : SimpleContext = SimpleContext::default();
 fn with_buffer () -> Result<()> {
     let values = [1, 2, 3, 4, 5];
     let buffer = Buffer::new(&values, MemAccess::READ_ONLY, false)?;
-    let evt : ReadBuffer<i32, _> = buffer.read_all(EMPTY)?;
+    let evt : ReadBuffer<i32, _> = buffer.read(.., EMPTY)?;
     
     let read : Vec<i32> = evt.wait()?;
     assert_eq!(values.as_slice(), read.as_slice());
