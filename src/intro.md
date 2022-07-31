@@ -1,3 +1,6 @@
+[![Crates.io](https://img.shields.io/crates/v/blaze-rs)](https://crates.io/crates/blaze-rs)
+[![docs.rs](https://img.shields.io/docsrs/blaze-rs)](https://docs.rs/blaze-rs/latest)
+
 # Blaze
 
 > **Note**\
