@@ -2,7 +2,7 @@
 
 The `Buffer` type is a wrapper arround a `RawBuffer` that provides extra functionality and safety guarantees. It has the following signature:
 
-```rust
+```rust,ignore
 pub struct Buffer<T: Copy, C: Context = Global> {
     inner: RawBuffer,
     ctx: C,

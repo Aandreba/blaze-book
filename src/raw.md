@@ -2,7 +2,7 @@
 
 In Blaze, the _raw_ types are used to represent an underlying OpenCL objects plainly. They offer no extra functionality and have the following signature.
 
-```rust
+```rust,ignore
 #[repr(transparent)]
 pub struct RawType (NonNull<c_void>);
 ```

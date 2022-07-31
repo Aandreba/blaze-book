@@ -4,7 +4,8 @@ A Blaze context is the owner of a single OpenCL context and one or more OpenCL c
 It's task is to manage the distribution of command queues amongst the various _enqueue_ functions, maximizing performance by distributing the work amongst them.
 
 The simplified signature of the `Context` trait is the following:
-```rust
+
+```rust,ignore
 pub trait Context {
     fn queues (&self) -> &[RawCommandQueue];
     fn next_queue (&self) -> &RawCommandQueue;
