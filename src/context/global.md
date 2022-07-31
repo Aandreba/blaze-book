@@ -5,7 +5,7 @@ Inspired by Rust's Allocator syntax, `Global` is a [ZST](https://doc.rust-lang.o
 Like with the Allocator API, you can specify a global context with the `#[global_context]` macro.
 
 ```rust
-use blaze::prelude::*;
+use blaze_rs::prelude::*;
 
 #[global_context]
 static CONTEXT : SimpleContext = SimpleContext::default();

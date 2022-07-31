@@ -27,7 +27,7 @@ pub struct Rect2D<T, A: Allocator = Global> {
 
 ## Example
 ```rust
-use blaze::{prelude::*, context::SimpleContext};
+use blaze_rs::{prelude::*, context::SimpleContext};
 
 #[global_context]
 static CONTEXT : SimpleContext = SimpleContext::default();

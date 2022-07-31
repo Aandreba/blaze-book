@@ -7,7 +7,7 @@ This method returns a Rust [`Future`](https://doc.rust-lang.org/stable/std/futur
 
 ```rust
 use std::time::Duration;
-use blaze::prelude::*;
+use blaze_rs::prelude::*;
 
 #[global_context]
 static CONTEXT : SimpleContext = SimpleContext::default();

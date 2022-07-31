@@ -6,7 +6,7 @@ Blaze offers support for this feature through the use of the `MapBufferGuard` an
 ## Examples
 ```rust
 use std::ops::Deref;
-use blaze::prelude::*;
+use blaze_rs::prelude::*;
 
 #[global_context]
 static CONTEXT : SimpleContext = SimpleContext::default();
@@ -22,7 +22,7 @@ fn main () -> Result<()> {
 
 ```rust,compile_fail
 use std::ops::Deref;
-use blaze::prelude::*;
+use blaze_rs::prelude::*;
 
 #[global_context]
 static CONTEXT : SimpleContext = SimpleContext::default();

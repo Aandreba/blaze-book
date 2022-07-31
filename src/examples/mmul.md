@@ -3,7 +3,7 @@
 ## Rust code
 ```rust
 use std::mem::MaybeUninit;
-use blaze::prelude::*;
+use blaze_rs::prelude::*;
 
 #[global_context]
 static CONTEXT : SimpleContext = SimpleContext::default();

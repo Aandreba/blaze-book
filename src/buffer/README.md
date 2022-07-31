@@ -14,7 +14,7 @@ pub struct Buffer<T: Copy, C: Context = Global> {
 
 ```rust
 use std::ptr::NonNull;
-use blaze::{prelude::*, context::SimpleContext};
+use blaze_rs::{prelude::*, context::SimpleContext};
 
 #[global_context]
 static CONTEXT : SimpleContext = SimpleContext::default();

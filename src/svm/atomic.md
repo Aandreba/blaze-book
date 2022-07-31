@@ -4,7 +4,7 @@
 OpenCL supports the use of atomics through SVM pointers. However, the following would not result in a correct SVM atomic implementation.
 
 ```rust
-use blaze::{prelude::*, svm::*};
+use blaze_rs::{prelude::*, svm::*};
 use std::sync::atomic::AtomicU32;
 
 #[global_context]
@@ -31,7 +31,7 @@ fn main () -> Result<()> {
 This implementation is incorrect because, when using atomics, OpenCL must be notified that the SVM allocation needs support for atomics. The correct implementation would be the following.
 
 ```rust
-use blaze::{prelude::*, svm::*};
+use blaze_rs::{prelude::*, svm::*};
 use std::sync::atomic::AtomicU32;
 
 #[global_context]

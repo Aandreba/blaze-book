@@ -6,7 +6,7 @@ This code requires OpenCL 3.0 or higher.
 ```rust
 use std::{time::{SystemTime}, mem::MaybeUninit};
 use once_cell::sync::Lazy;
-use blaze::prelude::*;
+use blaze_rs::prelude::*;
 
 #[global_context]
 static CONTEXT : SimpleContext = SimpleContext::default();
