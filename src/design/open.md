@@ -9,52 +9,6 @@ In my opinion, one of the main reasons programming languges end up being clutter
 
 A great example of this is Java, where getters and setters galore. This level of distrust amongst develepers is already too ingrained in the Java community to do anything about it, but it doesn't have to be this way with Rust.
 
-```rust,mdbook-runnable
-use std::time::{SystemTime, Duration, SystemTimeError};
-
-pub const SECS_IN_YEAR : u64 = 31557600;
-
-#[derive(Debug, Clone)]
-#[non_exhaustive]
-pub struct Person {
-    pub name: Box<str>,
-    pub birth_date: SystemTime
-}
-
-impl Person {
-    pub fn new (name: impl ToString, birth_date: SystemTime) -> Result<Self, SystemTimeError> {
-        let _ = birth_date.elapsed()?;
-
-        Ok(Person {
-            name: name.to_string().into_boxed_str(),
-            birth_date
-        })
-    }
-
-    #[inline(always)]
-    pub fn from_age (name: impl ToString, age: Duration) -> Self {
-        let birth_date = SystemTime::now() - age;
-        unsafe { Self::new(name, birth_date).unwrap_unchecked() }
-    }
-
-    #[inline(always)]
-    pub fn age (&self) -> u64 {
-        /// SAFETY: We checked at creation that `birth_date` is in the past.
-        let dur = unsafe {
-            self.birth_date.elapsed().unwrap_unchecked()
-        };
-
-        dur.as_secs() / SECS_IN_YEAR
-    }
-}
-
-fn main () {
-    let alex = Person::from_age("Alex", Duration::from_secs(21 * SECS_IN_YEAR));
-    println!("{}: {} years old", alex.name, alex.age());
-    assert_eq!(alex.age(), 21);
-}
-```
-
 ## No _sealed_ traits
 One of the most infuriating experiences I've had as a Rust developer is dealing with _sealed_ traits. Sealed traits are acompliched with the following technique.
 
