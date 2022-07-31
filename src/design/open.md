@@ -7,40 +7,7 @@ In my opinion, one of the main reasons programming languges end up being clutter
 
 > To clarify, _user_ here refers to the developers using our library.
 
-A great example of this is Java, where getters and setters galore.
-```java
-public class Person {
-    private String name;
-    private LocalDate birthDate;
-
-    public Person (String name, LocalDate birthDate) {
-        if birthDate.isAfter(LocalDate.now()) {
-            throw new IllegalArgumentException("Birth date cannot be in the future");
-        }
-
-        this.name = name;
-        this.birthDate = birthDate;        
-    }
-
-    public Person (String name, int age) {
-        this(name, LocalDate.now().minusYears(age));
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public LocalDate getBirthDate() {
-        return birthDate;
-    }
-
-    public int getAge () {
-        return Period.between(this.birthDate, LocalTime.now()).getYears();
-    }
-}
-```
-
-This level of distrust amongst develepers is already too ingrained in the Java community to do anything about it, but it doesn't have to be this way with Rust.
+A great example of this is Java, where getters and setters galore. This level of distrust amongst develepers is already too ingrained in the Java community to do anything about it, but it doesn't have to be this way with Rust.
 
 ```rust,mdbook-runnable
 use std::time::{SystemTime, Duration, SystemTimeError};
