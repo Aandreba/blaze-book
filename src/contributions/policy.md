@@ -12,6 +12,3 @@ This policy is easy and simple. When addressing another contributor, you should 
 
 ## No politics
 This is also a simple policy. No topics, other than those directly involving the project, should be discussed in issues or PRs. A violation of this policy will result in the perpetrators being **immediatelly banned**.
-
-## No _cancelling_
-In the same vein as the _no politics_ policy, any attempt to cancel or silence a contributor based on opinions not related to the Blaze project will not be tolerated. A violation of this policy will result in the perpetrators being **immediatelly banned**.
