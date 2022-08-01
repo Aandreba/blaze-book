@@ -1,6 +1,7 @@
 # Summary
 
 - [Introduction](intro.md)
+    - [Why Blaze?](why.md)
     - [Design philosphy](design/README.md)
         - [Rustified experience](design/rustified.md)
         - [Openness](design/open.md)
