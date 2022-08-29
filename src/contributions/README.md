@@ -13,3 +13,11 @@ Another major type of contribution is bug fixes. If you find a bug, please repor
 
 ## New features
 The Blaze project is always excited about the prospect of addding new features and improving existsing ones. If you have any ideas for new features, please feel free to create a new issue on the [GitHub repository](todo).
+
+> **Warning**\
+> When cloning the Blaze repo, you might have to clone the `docs` submodule manually. To do so, run the following commands.
+> ```
+> git clone https://github.com/Aandreba/blaze.git
+> git submodule update --recursive --init
+> make check
+> ```
