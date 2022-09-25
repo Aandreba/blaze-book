@@ -1,35 +1,29 @@
 # Asynchronous event
 
-The `Event` trait ofers various ways to wait for the completion of an event.
-
-One of the most interesting methods to await an event is with the `wait_async` method.
-This method returns a Rust [`Future`](https://doc.rust-lang.org/stable/std/future/trait.Future.html) that resolves when the underlying event has completed.
+Events can be joined asynchronously with the `join_async` method and the `EventWait` type.
 
 ```rust
 use std::time::Duration;
-use blaze_rs::prelude::*;
+use blaze_rs::{event::{EventWait, consumer::Noop}, prelude::*};
 
 #[global_context]
 static CONTEXT : SimpleContext = SimpleContext::default();
 
-#[tokio::main]
-async fn main () -> Result<()> {
-    const SIZE : usize = u16::MAX as usize;
-    let values = vec![1234; SIZE];
+# #[tokio::main] async fn main () -> Result<()> {
+let flag = FlagEvent::new()?;
+let sub: EventWait<Noop> = flag
+    .subscribe()
+    .into_event()
+    .join_async()?;
 
-    let mut buffer = Buffer::<i32>::new_uninit(SIZE, MemAccess::READ_WRITE, false)?;
-    let flag = FlagEvent::new()?;
+let handle = tokio::spawn(async move {
+    tokio::time::sleep(Duration::from_secs(2)).await;
+    flag.try_mark(None)?;
+    return Ok();
+});
 
-    let read = buffer.write_init(0, &values, &flag)?;
-    tokio::spawn(async move {
-        tokio::time::sleep(Duration::from_secs(2)).await;
-        flag.complete(None)
-    });
-
-    let _ = read.wait_async()?.await;
-
-    Ok(())
-}
+tokio::try_join!(handle, sub)?;
+# Ok(()) }
 ```
 
-> Note that `wait_async` requires the `futures` feature.
+> Note that `join_async` requires the `futures` feature.

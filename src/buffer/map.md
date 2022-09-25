@@ -13,7 +13,7 @@ static CONTEXT : SimpleContext = SimpleContext::default();
 
 fn main () -> Result<()> {
     let buffer = Buffer::new(&[1, 2, 3, 4, 5], MemAccess::default(), false)?;
-    let map = buffer.map(.., EMPTY)?.wait()?;
+    let map = buffer.map_blocking(.., None)?;
 
     assert_eq!(map.deref(), &[1, 2, 3, 4, 5]);
     Ok(())
@@ -29,8 +29,8 @@ static CONTEXT : SimpleContext = SimpleContext::default();
 
 fn main () -> Result<()> {
     let mut buffer = Buffer::new(&[1, 2, 3, 4, 5], MemAccess::default(), false)?;
-    let map = buffer.map(.., EMPTY)?.wait()?;
-    let mut_map = buffer.map_mut(.., EMPTY)?.wait()?; // compile error: cannot borrow `buffer` as mutable because it is also borrowed as immutable
+    let map = buffer.map_blocking(.., None)?;
+    let mut mut_map = buffer.map_mut_blocking(.., None)?; // compile error: cannot borrow `buffer` as mutable because it is also borrowed as immutable
 
     assert_eq!(map.deref(), &[1, 2, 3, 4, 5]);
     Ok(())
