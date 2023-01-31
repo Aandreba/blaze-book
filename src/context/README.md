@@ -7,6 +7,7 @@ The simplified signature of the `Context` trait is the following:
 
 ```rust,ignore
 pub trait Context {
+    fn as_raw (&self) -> &RawContext;
     fn queues (&self) -> &[RawCommandQueue];
     fn next_queue (&self) -> &RawCommandQueue;
 }
@@ -14,5 +15,3 @@ pub trait Context {
 
 The `queues` method returns a list with all the command queues owned by the context.\
 The `next_queue` method returns the next command queue to be used in an _enqueue_ function.
-
-> Note that all `Context` types must implement `Deref` with a target of `RawContext`.

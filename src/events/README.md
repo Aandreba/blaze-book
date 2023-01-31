@@ -1,15 +1,18 @@
 # Events
 
-Blaze events are similar in sytnax to Rust [`Future`](https://doc.rust-lang.org/stable/std/future/trait.Future.html). It is designed to be able to safely return a value after the underlying `RawEvent` has completed. The `Event` trait has the following signature:
+Blaze events are considered a mixture of a Rust [`Future`](https://doc.rust-lang.org/stable/std/future/trait.Future.html) and [`JoinHandle`](https://doc.rust-lang.org/stable/std/thread/struct.JoinHandle.html). Their signature is the following:
 
 ```rust,ignore
-pub trait Event {
-    type Output;
+use std::sync::mpsc::Sender;
 
-    fn as_raw (&self) -> &RawEvent;
-    fn consume (self, err: Option<Error>) -> Result<Self::Output>;
-    
-    // Provided methods
-    ...
+pub struct Event<C> {
+    inner: RawEvent,
+    consumer: C,
+    #[cfg(not(feature = "cl1_1"))]
+    send: Sender<EventCallback>,
+    #[cfg(feature = "cl1_1")]
+    send: PhantomData<Sender<()>>,
 }
 ```
+
+Blaze events contain their underlying `RawEvent` alongside a `Consumer`.
