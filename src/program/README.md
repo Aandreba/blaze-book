@@ -4,7 +4,10 @@ To ease the safe use of OpenCL programs and kernels, Blaze provides the `#[blaze
 
 ## Example
 
-```rust
+```rust,ignore
+use blaze_rs::prelude::*;
+use core::mem::*;
+
 #[blaze(MatrixOps)]
 #[link = include_str!("matrixops.cl")]
 extern "C" {
@@ -14,7 +17,10 @@ extern "C" {
 ```
 
 ### Expands to
-```rust
+```rust,ignore
+use blaze_rs::prelude::*;
+use core::mem::*;
+
 struct MatrixOps<C: ::blaze::context::Context = ::blaze::context::Global> {
     __blaze_inner__: ::blaze::core::RawProgram,
     __blaze_ctx__: C,
