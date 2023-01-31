@@ -33,6 +33,5 @@
 - [Examples](examples/README.md)
     - [Matrix multiplication](examples/mmul.md)
     - [Random Number Generator](examples/rng.md)
-- [Expected future features](todo.md)
 - [Contributions](contributions/README.md)
     - [Policy](contributions/policy.md)

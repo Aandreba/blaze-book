@@ -6,6 +6,6 @@ An event's `Consumer` is the responsable to perform the necessary underlying ope
 pub trait Consumer<'a>: 'a {
     type Output;
     
-    fn consume (self) -> Result<Self::Output>;
+    unsafe fn consume (self) -> Result<Self::Output>;
 }
 ```
