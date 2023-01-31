@@ -14,7 +14,7 @@ pub struct Buffer<T: Copy, C: Context = Global> {
 
 ```rust
 use std::ptr::NonNull;
-use blaze_rs::{prelude::*, context::SimpleContext};
+use blaze_rs::{prelude::*, context::SimpleContext, buffer::BufferRange};
 
 #[global_context]
 static CONTEXT : SimpleContext = SimpleContext::default();
@@ -40,7 +40,7 @@ fn without_buffer () -> Result<()> {
     
     let mut read = Vec::<i32>::with_capacity(values.len());
     unsafe {
-        let evt : RawEvent = buffer.read_to_ptr(BufferRange::from_parts::<i32>(0, 5), read.as_mut_ptr().cast(), None)?;
+        let evt : RawEvent = buffer.read_to_ptr(BufferRange::from_parts::<i32>(0, 5)?, read.as_mut_ptr().cast(), None)?;
         let _ : () = evt.join_by_ref()?;
         read.set_len(values.len());
     }
